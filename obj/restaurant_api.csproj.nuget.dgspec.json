@@ -1,36 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "D:\\German\\restaurant_api_ado_ready\\restaurant_api.csproj": {}
+    "D:\\Pato\\Desktop\\restaurant_api_ado_ready\\restaurant_api.csproj": {}
   },
   "projects": {
-    "D:\\German\\restaurant_api_ado_ready\\restaurant_api.csproj": {
+    "D:\\Pato\\Desktop\\restaurant_api_ado_ready\\restaurant_api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\German\\restaurant_api_ado_ready\\restaurant_api.csproj",
+        "projectUniqueName": "D:\\Pato\\Desktop\\restaurant_api_ado_ready\\restaurant_api.csproj",
         "projectName": "restaurant_api",
-        "projectPath": "D:\\German\\restaurant_api_ado_ready\\restaurant_api.csproj",
-        "packagesPath": "C:\\Users\\S2-PC00\\.nuget\\packages\\",
-        "outputPath": "D:\\German\\restaurant_api_ado_ready\\obj\\",
+        "projectPath": "D:\\Pato\\Desktop\\restaurant_api_ado_ready\\restaurant_api.csproj",
+        "packagesPath": "C:\\Users\\Pato\\.nuget\\packages\\",
+        "outputPath": "D:\\Pato\\Desktop\\restaurant_api_ado_ready\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\S2-PC00\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Pato\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net9.0": {
+            "targetAlias": "net9.0",
             "projectReferences": {}
           }
         },
@@ -43,15 +37,16 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net9.0": {
+          "targetAlias": "net9.0",
           "dependencies": {
-            "Microsoft.Data.SqlClient": {
+            "MySqlConnector": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[2.3.7, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -77,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

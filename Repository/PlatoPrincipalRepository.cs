@@ -1,5 +1,5 @@
 
-using Microsoft.Data.SqlClient;
+using MySqlConnector;
 
 namespace RestauranteAPI.Repositories
 {
@@ -16,12 +16,12 @@ namespace RestauranteAPI.Repositories
         {
             var platosPrincipales = new List<PlatoPrincipal>();
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new MySqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
 
                 string query = "SELECT Id, Nombre, Precio, Ingredientes FROM PlatoPrincipal";
-                using (var command = new SqlCommand(query, connection))
+                using (var command = new MySqlCommand(query, connection))
                 {
                     using (var reader = await command.ExecuteReaderAsync())
                     {
@@ -47,12 +47,12 @@ namespace RestauranteAPI.Repositories
         {
             PlatoPrincipal platoPrincipal = null;
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new MySqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
 
                 string query = "SELECT Id, Nombre, Precio, Ingredientes FROM PlatoPrincipal WHERE Id = @Id";
-                using (var command = new SqlCommand(query, connection))
+                using (var command = new MySqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Id", id);
 
@@ -76,12 +76,12 @@ namespace RestauranteAPI.Repositories
 
         public async Task AddAsync(PlatoPrincipal platoPrincipal)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new MySqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
 
                 string query = "INSERT INTO PlatoPrincipal (Nombre, Precio, Ingredientes) VALUES (@Nombre, @Precio, @Ingredientes)";
-                using (var command = new SqlCommand(query, connection))
+                using (var command = new MySqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Nombre", platoPrincipal.Nombre);
                     command.Parameters.AddWithValue("@Precio", platoPrincipal.Precio);
@@ -94,12 +94,12 @@ namespace RestauranteAPI.Repositories
 
         public async Task UpdateAsync(PlatoPrincipal platoPrincipal)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new MySqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
 
-                string query = "UPDATE Productos SET Nombre = @Nombre, Precio = @Precio, Ingredientes = @Ingredientes WHERE Id = @Id";
-                using (var command = new SqlCommand(query, connection))
+                string query = "UPDATE PlatoPrincipal SET Nombre = @Nombre, Precio = @Precio, Ingredientes = @Ingredientes WHERE Id = @Id";
+                using (var command = new MySqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Id", platoPrincipal.Id);
                     command.Parameters.AddWithValue("@Nombre", platoPrincipal.Nombre);
@@ -113,12 +113,12 @@ namespace RestauranteAPI.Repositories
 
         public async Task DeleteAsync(int id)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new MySqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
 
                 string query = "DELETE FROM PlatoPrincipal WHERE Id = @Id";
-                using (var command = new SqlCommand(query, connection))
+                using (var command = new MySqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Id", id);
 
@@ -129,7 +129,7 @@ namespace RestauranteAPI.Repositories
 
         public async Task InicializarDatosAsync()
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new MySqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
 
@@ -140,7 +140,7 @@ namespace RestauranteAPI.Repositories
                     (@Nombre1, @Precio1, @Ingredientes1),
                     (@Nombre2, @Precio2, @Ingredientes2)";
 
-                using (var command = new SqlCommand(query, connection))
+                using (var command = new MySqlCommand(query, connection))
                 {
                     // Parámetros para el primer plato
                     command.Parameters.AddWithValue("@Nombre1", "Plato combinado");
