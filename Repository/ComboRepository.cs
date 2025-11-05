@@ -9,10 +9,8 @@ namespace RestauranteAPI.Repositories
 
         public ComboRepository(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("RestauranteDB")
-                                ?? throw new Exception("falla la cadena de conexión");
+            _connectionString = configuration.GetConnectionString("RestauranteBD");
         }
-
         public async Task<List<Combo>> GetAllAsync()
         {
             var combos = new List<Combo>();

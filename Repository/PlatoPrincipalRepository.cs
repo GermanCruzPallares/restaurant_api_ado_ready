@@ -10,13 +10,8 @@ namespace RestauranteAPI.Repositories
 
         public PlatoPrincipalRepository(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("RestauranteDB")
-                                ?? throw new Exception("falla la cadena de conexión");
+            _connectionString = configuration.GetConnectionString("RestauranteBD");
         }
-
-
-
-
         public async Task<List<PlatoPrincipal>> GetAllAsync()
         {
             var platosPrincipales = new List<PlatoPrincipal>();
