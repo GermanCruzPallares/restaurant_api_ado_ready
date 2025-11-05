@@ -2,11 +2,9 @@ using RestauranteAPI.Controllers;
 using RestauranteAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("RestauranteDB");
 
-builder.Services.AddScoped<IPlatoPrincipalRepository, PlatoPrincipalRepository>(provider =>
-new PlatoPrincipalRepository(connectionString));
-
+builder.Services.AddScoped<IPlatoPrincipalRepository, PlatoPrincipalRepository>();
+builder.Services.AddScoped<IComboRepository, ComboRepository>();
 
 // Add services to the container.
 
@@ -18,11 +16,10 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+
 
 app.UseHttpsRedirection();
 

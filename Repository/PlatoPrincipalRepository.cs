@@ -6,11 +6,16 @@ namespace RestauranteAPI.Repositories
     public class PlatoPrincipalRepository : IPlatoPrincipalRepository
     {
         private readonly string _connectionString;
+        private readonly IPlatoPrincipalRepository _platoRepo;
 
-        public PlatoPrincipalRepository(string connectionString)
+        public PlatoPrincipalRepository(IConfiguration configuration)
         {
-            _connectionString = connectionString;
+            _connectionString = configuration.GetConnectionString("RestauranteDB")
+                                ?? throw new Exception("falla la cadena de conexión");
         }
+
+
+
 
         public async Task<List<PlatoPrincipal>> GetAllAsync()
         {
@@ -33,7 +38,7 @@ namespace RestauranteAPI.Repositories
                                 Nombre = reader.GetString(1),
                                 Precio = (double)reader.GetDecimal(2),
                                 Ingredientes = reader.GetString(3)
-                            }; 
+                            };
 
                             platosPrincipales.Add(plato);
                         }
